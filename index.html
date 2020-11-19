@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<canvas width="1368" height="768" id="myCanvas" style="border:1px solid #d3d3d3"></canvas>
+<script>
+    class Circle {
+        constructor(x, y, radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+        creatCircle()
+        {
+            let ctx=document.getElementById('myCanvas').getContext('2d');
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+            ctx.fill();
+        }
+        creatCircleRandomColor()
+        {
+            let ctx=document.getElementById('myCanvas').getContext('2d');
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+            ctx.fillStyle='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
+            ctx.fill();
+        }
+        creatCircleRandomColorAndPosition()
+        {
+            let ctx=document.getElementById('myCanvas').getContext('2d');
+            ctx.beginPath();
+            let radius_=Math.random()*100;
+            let y_=Math.random()*469+100;
+            let x_=Math.random()*1169+100;
+            let color='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
+            ctx.arc(x_,y_,radius_,0,2*Math.PI);
+            ctx.fillXtyle=color;
+            ctx.fill();
+            console.log(radius_+'//'+x_+'//'+y_);
+        }
+    }
+
+    let pic01=new Circle(0,0,80);
+    pic01.creatCircle();
+    let picRandomRadius=new Circle(100,100,Math.floor(Math.random()*80));
+    picRandomRadius.creatCircleRandomColor();
+    let picRandomAll = new Circle(0,0,0);
+    picRandomAll.creatCircleRandomColorAndPosition();
+    for(let i=0;i<10;i++)
+    {
+        picRandomAll.creatCircleRandomColorAndPosition();
+    }
+</script>
+</body>
+</html>
